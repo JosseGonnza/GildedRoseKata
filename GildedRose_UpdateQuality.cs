@@ -149,16 +149,5 @@ namespace GildedRoseKata
             fooItem.SellIn.Should().Be(4);
         }
 
-        [Fact(DisplayName = "AgedBrie quality increases when sellIn decreases")]
-        public void Quality_of_AgedBrie_increases_when_sellIn_decreses()
-        {
-            var fooItem = new Item { Name = "Aged Brie", Quality = 10, SellIn = 5 };
-            var gildedRose = new GildedRose(new List<Item> { fooItem });
-
-            gildedRose.UpdateQuality();
-
-            fooItem.SellIn.Should().Be(4);
-        }
-
     }
 }
