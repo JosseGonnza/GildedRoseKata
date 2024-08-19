@@ -1,6 +1,6 @@
 ﻿using GildedRoseKata;
 
-public class BackstagePassesItem : IUpdatableItem
+public class BackstagePassesItem : UpdatableItem
 {
     private Item item;
 
@@ -9,7 +9,7 @@ public class BackstagePassesItem : IUpdatableItem
         this.item = item;
     }
 
-    public void Update()
+    public override void Update()
     {
         if (item.Quality < 50) item.Quality = item.Quality + 1;
         if (item.Quality < 50 && item.SellIn < 11) item.Quality = item.Quality + 1;

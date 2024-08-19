@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Drawing.Text;
-using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GildedRoseKata;
 
@@ -12,6 +12,14 @@ public class GildedRose
         this._items = item;
     }
 
+    public Dictionary<string, Func<Item, UpdatableItem>> UpdatableItemTable = new()
+    {
+        { "Aged Brie", (item) => new AgedBrieItem(item) },
+        { "Backstage passes to a TAFKAL80ETC concert", (item) => new BackstagePassesItem(item) },
+        { "Sulfuras, Hand of Ragnaros", (item) => new SulfurasItem(item) },
+        { "Default", (item) => new RegularItemUpdate(item) }
+    };
+
     public void UpdateQuality()
     {
         foreach (var item in _items)
@@ -20,14 +28,8 @@ public class GildedRose
         }
     }
 
-    public IUpdatableItem CreateUpdatableItem(Item item)
+    public UpdatableItem CreateUpdatableItem(Item item)  // kvp means KeyValuePair
     {
-        return item.Name switch
-        {
-            "Aged Brie" => new AgedBrieItem(item),
-            "Backstage passes to a TAFKAL80ETC concert" => new BackstagePassesItem(item),
-            "Sulfuras, Hand of Ragnaros" => new SulfurasItem(item),
-            _ => new RegularItemUpdate(item)
-        };
+        return UpdatableItemTable.First((kvp) => kvp.Key.Equals(item.Name) || kvp.Key.Equals("Default")).Value(item);  // Value is a function(item)
     }
 }

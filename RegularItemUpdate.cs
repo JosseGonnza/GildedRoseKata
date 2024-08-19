@@ -1,6 +1,6 @@
 ﻿using GildedRoseKata;
 
-public class RegularItemUpdate : IUpdatableItem
+public class RegularItemUpdate : UpdatableItem
 {
     private Item item;
 
@@ -9,7 +9,7 @@ public class RegularItemUpdate : IUpdatableItem
         this.item = item;
     }
 
-    public void Update()
+    public override void Update()
     {
         if (item.SellIn < 0 && item.Quality > 0) item.Quality = item.Quality - 1;
         if (item.Quality > 0) item.Quality = item.Quality - 1;

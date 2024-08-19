@@ -1,6 +1,6 @@
 ﻿using GildedRoseKata;
 
-public class SulfurasItem : IUpdatableItem
+public class SulfurasItem : UpdatableItem
 {
     private Item item;
 
@@ -9,7 +9,7 @@ public class SulfurasItem : IUpdatableItem
         this.item = item;
     }
 
-    public void Update()
+    public override void Update()
     {
         return;
     }
