@@ -23,9 +23,7 @@ namespace GildedRoseKata
                         if (item.Name != "Sulfuras, Hand of Ragnaros") item.Quality = item.Quality - 1;
                     }
                 }
-                else
-                {
-                    if (item.Quality < 50)
+                else if (item.Quality < 50)
                     {
                         item.Quality = item.Quality + 1;
 
@@ -37,7 +35,6 @@ namespace GildedRoseKata
                             if (item.SellIn < 6) item.Quality = item.Quality + 1;
                         }
                     }
-                }
 
                 if (item.Name != "Sulfuras, Hand of Ragnaros") item.SellIn = item.SellIn - 1;
 
@@ -54,10 +51,7 @@ namespace GildedRoseKata
                         }
                         else item.Quality = 0;
                     }
-                    else
-                    {
-                        if (item.Quality < 50) item.Quality = item.Quality + 1;
-                    }
+                    else if (item.Quality < 50) item.Quality = item.Quality + 1;
                 }
             }
         }
