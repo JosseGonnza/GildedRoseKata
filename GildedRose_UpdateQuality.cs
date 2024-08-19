@@ -6,11 +6,7 @@ using Xunit;
 
 namespace GildedRoseKata
 {
-    /// <summary>
-    /// Test naming convention recommendation:
-    /// https://ardalis.com/unit-test-naming-convention/
-    /// </summary>
-    public class GildedRose_UpdateQuality
+    public class GildedRose_UpdateSulfuras
     {
         [Fact]
         public void DoesNothingGivenSulfuras()
@@ -21,11 +17,11 @@ namespace GildedRoseKata
 
             };
             var gildedRose = new GildedRose(items);
-            
+
             gildedRose.UpdateQuality();
 
             var firstItem = items.First();
-            
+
             // Use your preferred assertion library (already included - pick one delete others)
             // xunit default
             Assert.Equal(initialQuality, firstItem.Quality);
@@ -36,5 +32,35 @@ namespace GildedRoseKata
             // shouldly
             firstItem.Quality.ShouldBe(initialQuality);
         }
+    }
+
+    public class GildedRose_UpdateQuality
+    {
+        [Fact(DisplayName = "At the end of each day quality is reduced by 1")]
+        public void Quality_should_is_reduce_by_1_at_the_end_of_each_day()
+        {
+            var fooItem = new Item { Name = "foo", Quality = 10, SellIn = 5 };
+            var gildedRose = new GildedRose(new List<Item> { fooItem });
+
+            gildedRose.UpdateQuality();
+
+            fooItem.Quality.Should().Be(9);
+        }
+
+    }
+
+    public class GildedRose_UpdateSellIn
+    {
+        [Fact(DisplayName = "At the end of each day sellIn is reduced by 1")]
+        public void SellIn_should_is_reduce_by_1_at_the_end_of_each_day()
+        {
+            var fooItem = new Item { Name = "foo", Quality = 10, SellIn = 5 };
+            var gildedRose = new GildedRose(new List<Item> { fooItem});
+            
+            gildedRose.UpdateQuality();
+
+            fooItem.SellIn.Should().Be(4);
+        }
+
     }
 }
