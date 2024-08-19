@@ -17,17 +17,14 @@ namespace GildedRoseKata
         {
             foreach (var item in _items)
             {
-                if (item.Name == "Aged Brie") new AgedBrieItem(item).Update();
-
-
-                else if (item.Name == "Backstage passes to a TAFKAL80ETC concert") new BackstagePassesItem(item).Update();
-
-
-                else if (item.Name == "Sulfuras, Hand of Ragnaros") new SulfurasItem(item).Update();
-
-
-                else new RegularItemUpdate(item).Update();
-
+                IUpdatableItem typedItem = item.Name switch
+                {
+                    "Aged Brie" => new AgedBrieItem(item),
+                    "Backstage passes to a TAFKAL80ETC concert" => new BackstagePassesItem(item),
+                    "Sulfuras, Hand of Ragnaros" => new SulfurasItem(item),
+                    _ => new RegularItemUpdate(item)
+                };
+                typedItem.Update();
             }
         }
     }
