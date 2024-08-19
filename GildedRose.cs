@@ -17,40 +17,28 @@ namespace GildedRoseKata
         {
             foreach (var item in _items)
             {
-                if (item.Name == "Aged Brie") AgedBrieUpdate(item);
+                if (item.Name == "Aged Brie") new AgedBrieItem(item).Update();
 
-                else if (item.Name == "Backstage passes to a TAFKAL80ETC concert") BackstagePassesUpdate(item);
 
-                else if (item.Name == "Sulfuras, Hand of Ragnaros") SulfurasUpdate(item);
+                else if (item.Name == "Backstage passes to a TAFKAL80ETC concert") new BackstagePassesItem(item).Update();
 
-                else RegularItemUpdate(item);
+
+                else if (item.Name == "Sulfuras, Hand of Ragnaros") new SulfurasItem(item).Update();
+
+
+                else new RegularItemUpdate(item).Update();
+
             }
-        }
-        private void AgedBrieUpdate(Item item)
-        {
-            new AgedBrieItem(item).Update();
-        }
-
-        private void BackstagePassesUpdate(Item item)
-        {
-            new BackstagePassesItem(item).Update();
-        }
-
-        public void SulfurasUpdate(Item item)
-        {
-            new SulfurasItem(item).Update();
-        }
-
-        public void RegularItemUpdate(Item item)
-        {
-            new RegularItemUpdate(item).Update();
         }
     }
 }
 
+public interface IUpdatableItem
+{
+    void Update();
+}
 
-
-public class AgedBrieItem
+public class AgedBrieItem : IUpdatableItem
 {
     private Item item;
 
@@ -66,7 +54,7 @@ public class AgedBrieItem
     }
 }
 
-public class BackstagePassesItem
+public class BackstagePassesItem : IUpdatableItem
 {
     private Item item;
 
@@ -84,7 +72,7 @@ public class BackstagePassesItem
     }
 }
 
-public class SulfurasItem
+public class SulfurasItem : IUpdatableItem
 {
     private Item item;
 
@@ -99,7 +87,7 @@ public class SulfurasItem
     }
 }
 
-public class RegularItemUpdate
+public class RegularItemUpdate : IUpdatableItem
 {
     private Item item;
 
