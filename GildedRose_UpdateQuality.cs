@@ -50,12 +50,12 @@ namespace GildedRoseKata
         [Fact(DisplayName = "When the sellIn ends, quality is reduce by 2")]
         public void Quality_should_is_reduce_by_2_when_the_sellIn_ends()
         {
-            var fooItem = new Item { Name = "foo", Quality = 10, SellIn = 0 };
+            var fooItem = new Item { Name = "foo", Quality = 20, SellIn = -1 };
             var gildedRose = new GildedRose(new List<Item> { fooItem });
 
             gildedRose.UpdateQuality();
 
-            fooItem.Quality.Should().Be(8);
+            fooItem.Quality.Should().Be(18);
         }
 
         [Fact(DisplayName = "Quality never is negative")]
