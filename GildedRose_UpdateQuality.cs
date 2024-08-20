@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Shouldly;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -158,6 +159,12 @@ namespace GildedRoseKata
         {
             var conjuredItem = new Item { Name = "Conjured", Quality = 4, SellIn = 5 };
             var gildedRose = new GildedRose(new List<Item> { conjuredItem });
+            var newUpdateItemDictionary = new Dictionary<string, Func<Item, UpdatableItem>>
+            {
+                { "Conjured", (item) => new ConjuredItem(item) }
+            };
+
+            gildedRose.UpdatableItemTable = newUpdateItemDictionary;
 
             gildedRose.UpdateQuality();
 
