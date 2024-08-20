@@ -170,5 +170,22 @@ namespace GildedRoseKata
 
             conjuredItem.Quality.Should().Be(2);
         }
+
+        [Fact(DisplayName = "Conjured’ items decrease sellIn by 1")]
+        public void ConjuredItems_decrease_sellIn_by_1()
+        {
+            var conjuredItem = new Item { Name = "Conjured", Quality = 4, SellIn = 5 };
+            var gildedRose = new GildedRose(new List<Item> { conjuredItem });
+            var newUpdateItemDictionary = new Dictionary<string, Func<Item, UpdatableItem>>
+            {
+                { "Conjured", (item) => new ConjuredItem(item) }
+            };
+
+            gildedRose.UpdatableItemTable = newUpdateItemDictionary;
+
+            gildedRose.UpdateQuality();
+
+            conjuredItem.SellIn.Should().Be(4);
+        }
     }
 }

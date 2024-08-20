@@ -12,6 +12,7 @@
         public override void Update()
         {
             item.Quality -= 2;
+            item.SellIn -= 1;
         }
     }
 }
