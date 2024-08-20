@@ -46,7 +46,7 @@ namespace GildedRoseKata
 
             fooItem.Quality.Should().Be(9);
         }
-        
+
         [Fact(DisplayName = "When the sellIn ends, quality is reduce by 2")]
         public void Quality_should_is_reduce_by_2_when_the_sellIn_ends()
         {
@@ -142,12 +142,26 @@ namespace GildedRoseKata
         public void SellIn_should_is_reduce_by_1_at_the_end_of_each_day()
         {
             var fooItem = new Item { Name = "foo", Quality = 10, SellIn = 5 };
-            var gildedRose = new GildedRose(new List<Item> { fooItem});
-            
+            var gildedRose = new GildedRose(new List<Item> { fooItem });
+
             gildedRose.UpdateQuality();
 
             fooItem.SellIn.Should().Be(4);
         }
 
+    }
+
+    public class GildedRose_UpdateConjuredItem
+    {
+        [Fact(DisplayName = "Conjured’ items degrade in quality twice as fast as normal items")]
+        public void ConjuredItems_degrade_in_quality_twice_as_fast_as_regularItems()
+        {
+            var conjuredItem = new Item { Name = "Conjured", Quality = 4, SellIn = 5 };
+            var gildedRose = new GildedRose(new List<Item> { conjuredItem });
+
+            gildedRose.UpdateQuality();
+
+            conjuredItem.Quality.Should().Be(2);
+        }
     }
 }
