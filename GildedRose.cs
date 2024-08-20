@@ -16,7 +16,7 @@ public class GildedRose
     {
         { "Aged Brie", (item) => new AgedBrieItem(item) },
         { "Backstage passes to a TAFKAL80ETC concert", (item) => new BackstagePassesItem(item) },
-        { "Sulfuras, Hand of Ragnaros", (item) => new SulfurasItem(item) },
+        { "Sulfuras, Hand of Ragnaros", (item) => new UpdatableItem(item) },
         { "Default", (item) => new RegularItemUpdate(item) }
     };
 

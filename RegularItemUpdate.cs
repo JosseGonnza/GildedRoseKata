@@ -2,12 +2,7 @@
 
 public class RegularItemUpdate : UpdatableItem
 {
-    private Item item;
-
-    public RegularItemUpdate(Item item)
-    {
-        this.item = item;
-    }
+    public RegularItemUpdate(Item item) : base(item) { }
 
     public override void Update()
     {
