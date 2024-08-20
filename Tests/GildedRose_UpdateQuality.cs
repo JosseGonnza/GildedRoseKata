@@ -1,11 +1,12 @@
 ﻿using FluentAssertions;
+using GildedRoseKata.Models;
 using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace GildedRoseKata
+namespace GildedRoseKata.Tests
 {
     public class GildedRose_UpdateSulfuras
     {

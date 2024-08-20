@@ -1,4 +1,4 @@
-﻿using GildedRoseKata;
+﻿using GildedRoseKata.Models;
 
 public class RegularItemUpdate : UpdatableItem
 {

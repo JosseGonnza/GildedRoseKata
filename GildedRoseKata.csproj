@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="CharacterizationTest.txt">
+    <None Update="Tests\CharacterizationTest.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>CharacterizationTest.cs</DependentUpon>
     </None>

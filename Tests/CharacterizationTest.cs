@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using Xunit;
 
-namespace GildedRoseKata
+namespace GildedRoseKata.Tests
 {
     public class CharacterizationTest
     {

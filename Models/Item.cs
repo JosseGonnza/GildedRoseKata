@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace GildedRoseKata
+namespace GildedRoseKata.Models
 {
     public class Item
     {
